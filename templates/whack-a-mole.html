@@ -3,9 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>Q-wHacK-a-MoL-e</title>
+        <script type="{{ url_for('static', filename='game.js') }}" defer></script>
     </head>
-    <body>
         <h1>Q-WHacK-a-MoL-e</h1>
+    <body>
+        <div class="game-table">
+            {% for row in range(5) %}
+            <div class="table-row">
+                {% for col in range(5) %}
+                <div class="table-col">
+                    <p>valamibazzmeg</p>
+                </div>
+                {% endfor %}
+            </div>
+                {% endfor %}
+        </div>
 
     </body>
 </html>
