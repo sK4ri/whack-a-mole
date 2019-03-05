@@ -1,11 +1,12 @@
 
 
 function getClicks() {
-    let table = document.querySelectorAll('.game-table');
+    let table = document.querySelectorAll('.col-md-1');
+
 
     for (let cell of table) {
         cell.addEventListener('click', function () {
-            alert('ASDASDASD')
+            cell.textContent = 'KAL';
         });
     }
 }
