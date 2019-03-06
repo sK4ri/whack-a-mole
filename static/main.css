@@ -1,11 +1,19 @@
 body {
-    background: lightgreen;
+    background: #6dbb6d;
     font-family: "American Typewriter";
     overflow: hidden;
 }
 
 h1 {
     text-align: center;
+}
+
+.container {
+    background-color: #a5875e;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #635549;
 }
 
 .col-md-1 {

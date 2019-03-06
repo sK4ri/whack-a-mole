@@ -27,7 +27,7 @@ function timed_popups (table, mole, field) {
     }
 
 
-function checkForClicks(table, mole, life, score, field, hit) {
+function checkForClicks(table, mole, life, score, field, hit, miss) {
 
     for (let cell of table) {
         cell.innerHTML = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
@@ -38,7 +38,7 @@ function checkForClicks(table, mole, life, score, field, hit) {
                 score += 10;
                 refresh_scores(life, score);
             } else {
-                cell.textContent = 'FAIL';
+                cell.innerHTML = miss;
                 life -= 1;
                 score -= 10;
                 refresh_scores(life, score);
@@ -58,11 +58,12 @@ function init() {
     let table = document.querySelectorAll('.col-md-1');
     let mole = `<img alt="" src="/static/mole.png" class="imagepopup0">`;
     let emptyField = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
+    let hit_emptyField = `<img alt="" src="/static/hillHit.png" class="imagepopup0">`;
     let registered_hit = `<img alt="" src="/static/hit.png" class="imagepopup0">`;
 
     refresh_scores(life, score);
     timed_popups(table, mole, emptyField);
-    checkForClicks(table, mole, life, score, emptyField, registered_hit);
+    checkForClicks(table, mole, life, score, emptyField, registered_hit, hit_emptyField);
 }
 
 init();
