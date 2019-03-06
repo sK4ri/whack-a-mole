@@ -1,0 +1,36 @@
+body {
+    background: lightgreen;
+    font-family: "American Typewriter";
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+}
+
+.col-md-1 {
+    display: table;
+    margin: 25px auto;
+    height: 100px;
+    width: 100px;
+}
+
+
+.col-md-1 img{
+    width: 100%;
+    vertical-align: bottom;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+}
+
+#hill {
+    max-height: 100px;
+    max-width: 100px;
+    z-index: 99;
+}
+
+#mole {
+    max-height: 100px;
+    max-width: 100px;
+}
