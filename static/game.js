@@ -58,7 +58,7 @@ function init() {
     let table = document.querySelectorAll('.col-md-1');
     let mole = `<img alt="" src="/static/mole.png" class="imagepopup0">`;
     let emptyField = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
-    let registered_hit = `<img alt="" src="/static/hit.png" class="imagepopup0">`
+    let registered_hit = `<img alt="" src="/static/hit.png" class="imagepopup0">`;
 
     refresh_scores(life, score);
     timed_popups(table, mole, emptyField);
