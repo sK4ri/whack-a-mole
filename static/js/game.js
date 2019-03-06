@@ -15,6 +15,8 @@ function checkForClicks(table, bug, hill) {
         cell.addEventListener('click', function () {
             if (cell.innerHTML === bug) {
                 cell.innerHTML = hill;
+            } else {
+                // score - 1
             }
             setTimeout(function () {
                 cell.innerHTML = hill;
@@ -26,8 +28,8 @@ function checkForClicks(table, bug, hill) {
 
 function init() {
     let table = document.querySelectorAll('.col-md-1');
-    let bug = `<img id="hill" alt="" src="/static/img/mole.png">`;
-    let hill = `<img id="hill" alt="" src="/static/img/hill.png">`;
+    let bug = `<img id="hill" alt="" src="/static/img/mole.png" id="mole">`;
+    let hill = `<img id="hill" alt="" src="/static/img/hill.png" id="hill">`;
     timed_popups(table, bug, hill);
     checkForClicks(table, bug, hill);
 }

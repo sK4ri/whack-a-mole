@@ -23,14 +23,3 @@ h1 {
     position: absolute;
     bottom: 0;
 }
-
-#hill {
-    max-height: 100px;
-    max-width: 100px;
-    z-index: 99;
-}
-
-#mole {
-    max-height: 100px;
-    max-width: 100px;
-}
