@@ -1,6 +1,6 @@
 
 
-function end_of_game (life, score) {
+function checkState (life, score) {
     if (life < 1 || score < 0) {
         alert('GAME OVER!')
     } else if (score >= 50) {
@@ -9,25 +9,25 @@ function end_of_game (life, score) {
 }
 
 
-function refresh_scores (life, score) {
+function refreshScores (life, score) {
     document.querySelector('.life')
-                    .innerHTML = `<div class="life">${'Life: ' + life}</div>`;
+                    .innerHTML = `<div id="life">${'Life: ' + life}</div>`;
     document.querySelector('.scoring-system')
-                    .innerHTML = `<div class="scoring-system">${'Score: '+ score}</div>`;
+                    .innerHTML = `<div id="scoring-system">${'Score: '+ score}</div>`;
 }
 
 
-function timed_popups (table, mole, field) {
+function timedPopups (table, mole, field) {
 
     setInterval(function () {
-    let current_cell = table[Math.floor(Math.random()*table.length)];
-        current_cell.innerHTML = mole;
-        setTimeout(function () {current_cell.innerHTML = field}, 1500);
+    let currentCell = table[Math.floor(Math.random()*table.length)];
+        currentCell.innerHTML = mole;
+        setTimeout(function () {currentCell.innerHTML = field}, 1500);
         }, 2000);
     }
 
 
-function checkForClicks(table, mole, life, score, field, hit, miss) {
+function gameLogic(table, mole, life, score, field, hit, miss) {
 
     for (let cell of table) {
         cell.innerHTML = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
@@ -36,17 +36,16 @@ function checkForClicks(table, mole, life, score, field, hit, miss) {
             if (cell.innerHTML === mole) {
                 cell.innerHTML = hit;
                 score += 10;
-                refresh_scores(life, score);
             } else {
                 cell.innerHTML = miss;
                 life -= 1;
                 score -= 10;
-                refresh_scores(life, score);
             }
-            end_of_game(life, score);
             setTimeout(function () {
                 cell.innerHTML = field
             }, 500);
+            refreshScores(life, score);
+            checkState(life, score);
         });
     }
 }
@@ -58,12 +57,11 @@ function init() {
     let table = document.querySelectorAll('.col-md-1');
     let mole = `<img alt="" src="/static/mole.png" class="imagepopup0">`;
     let emptyField = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
-    let hit_emptyField = `<img alt="" src="/static/hillHit.png" class="imagepopup0">`;
-    let registered_hit = `<img alt="" src="/static/hit.png" class="imagepopup0">`;
+    let registeredMiss = `<img alt="" src="/static/hillHit.png" class="imagepopup0">`;
+    let registeredHit = `<img alt="" src="/static/hit.png" class="imagepopup0">`;
 
-    refresh_scores(life, score);
-    timed_popups(table, mole, emptyField);
-    checkForClicks(table, mole, life, score, emptyField, registered_hit, hit_emptyField);
+    timedPopups(table, mole, emptyField);
+    gameLogic(table, mole, life, score, emptyField, registeredHit, registeredMiss);
 }
 
 init();
