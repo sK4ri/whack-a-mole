@@ -1,0 +1,25 @@
+body {
+    background: lightgreen;
+    font-family: "American Typewriter";
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+}
+
+.col-md-1 {
+    display: table;
+    margin: 20px auto;
+    height: 90px;
+    width: 90px;
+}
+
+
+.imagepopup0{
+    width: 100%;
+    vertical-align: bottom;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+}
