@@ -9,6 +9,7 @@ h1 {
 }
 
 .container {
+    cursor: url('/static/hammer.png'), pointer;
     background-color: #a5875e;
     border-radius: 25px;
     border-style: solid;
