@@ -1,13 +1,23 @@
 
 
+function endGame() {
+    document.getElementsByClassName('container')[0].style.display = 'none';
+    document.getElementsByClassName('life')[0].style.display = 'none';
+    document.getElementsByClassName('scoring-system')[0].style.display = 'none';
+}
+
+
 function checkState (life, score) {
 
     refreshScores(life, score);
     if (life < 1 || score < 0) {
-        alert('GAME OVER!')
-    } else if (score >= 50) {
-        alert('YOU WON!')
+        alert('GAME OVER!');
+        endGame()
     }
+    else if (score >= 50) {
+        alert('not yet')
+    }
+
 }
 
 
@@ -18,12 +28,12 @@ function refreshScores (life, score) {
 }
 
 
-function timedPopups (table, mole, field) {
+function timedPopups (table, mole, field, showTime) {
 
     setInterval(function () {
     let currentCell = table[Math.floor(Math.random()*table.length)];
         currentCell.innerHTML = mole;
-        setTimeout(function () {currentCell.innerHTML = field}, 1500);
+        setTimeout(function () {currentCell.innerHTML = field}, showTime);
         }, 2000);
     }
 
@@ -44,7 +54,6 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
             setTimeout(function () {
                 cell.innerHTML = field
             }, 500);
-            // refreshScores(life, score);
             checkState(life, score);
         });
     }
@@ -52,7 +61,7 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
 
 
 function init() {
-
+    let showTime = 1500;
     let life = eval(document.querySelector('.life').textContent);
     let score = eval(document.querySelector('.scoring-system').textContent);
     let table = document.querySelectorAll('.col-md-1');
@@ -61,7 +70,7 @@ function init() {
     let registeredMiss = `<img alt="" src="/static/hillHit.png" class="imagepopup0">`;
     let registeredHit = `<img alt="" src="/static/hit.png" class="imagepopup0">`;
 
-    timedPopups(table, mole, emptyField);
+    timedPopups(table, mole, emptyField, showTime);
     gameLogic(table, mole, life, score, emptyField, registeredHit, registeredMiss);
 }
 
