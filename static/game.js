@@ -4,7 +4,8 @@ function checkState (life, score) {
 
     refreshScores(life, score);
     if (life < 1 || score < 0) {
-        alert('GAME OVER!')
+        alert('GAME OVER!');
+        //death.play()
     } else if (score >= 50) {
         alert('YOU WON!')
     }
@@ -36,10 +37,12 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
             if (cell.innerHTML === mole) {
                 cell.innerHTML = hit;
                 score += 10;
+                //click_on_mole.play();
             } else {
                 cell.innerHTML = miss;
                 life -= 1;
                 score -= 10;
+                //missclick.play();
             }
             setTimeout(function () {
                 cell.innerHTML = field
@@ -50,7 +53,20 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
     }
 }
 
+let background_sound,click_on_mole,missclick,death;
+function setup() {
+    background_sound.setVolume(0.3);
+    background_sound.loop();
+}
 
+
+function preload() {
+    soundFormats('mp3', 'ogg');
+    background_sound = loadSound("/static/sounds/Free_SFX_Package/MP3/Music/Music-01.mp3");
+    //click_on_mole = loadSound("/static/sounds/FREE_SFX_Package/MP3/Input/Input-01.mp3");
+    //missclick = loadSound("/static/sounds/FREE_SFX_Package/MP3/Input/Input-04.mp3");
+    //death = loadSound("/static/sounds/FREE_SFX_Package/MP3/Alert/Alert-04.mp3")
+}
 function init() {
 
     let life = eval(document.querySelector('.life').textContent);
@@ -60,9 +76,12 @@ function init() {
     let emptyField = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
     let registeredMiss = `<img alt="" src="/static/hillHit.png" class="imagepopup0">`;
     let registeredHit = `<img alt="" src="/static/hit.png" class="imagepopup0">`;
-
     timedPopups(table, mole, emptyField);
     gameLogic(table, mole, life, score, emptyField, registeredHit, registeredMiss);
+
+
 }
+
+
 
 init();
