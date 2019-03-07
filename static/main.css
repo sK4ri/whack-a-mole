@@ -1,5 +1,9 @@
 body {
-    background: #6dbb6d;
+    background: url("/static/horizont.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     font-family: "American Typewriter";
     overflow: hidden;
 }
@@ -10,11 +14,6 @@ h1 {
 
 .container {
     cursor: url('/static/hammer.png'), pointer;
-    background-color: #a5875e;
-    border-radius: 25px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #635549;
 }
 
 .col-md-1 {
