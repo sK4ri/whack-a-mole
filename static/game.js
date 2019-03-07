@@ -1,5 +1,12 @@
 
 
+function endGame() {
+    document.getElementsByClassName('container')[0].style.display = 'none';
+    document.getElementsByClassName('life')[0].style.display = 'none';
+    document.getElementsByClassName('scoring-system')[0].style.display = 'none';
+}
+
+
 function checkState (life, score) {
 
     refreshScores(life, score);
@@ -8,6 +15,13 @@ function checkState (life, score) {
         //death.play()
     } else if (score >= 50) {
         alert('YOU WON!')
+        alert('GAME OVER!');
+        endGame();
+    } else if (score === 10) {
+        alert('Level 2.');
+    } else if (score >= 100) {
+        alert('YOU WIN');
+        endGame();
     }
 }
 
@@ -19,18 +33,20 @@ function refreshScores (life, score) {
 }
 
 
-function timedPopups (table, mole, field) {
+function timedPopups (table, mole, field, interval) {
 
     setInterval(function () {
     let currentCell = table[Math.floor(Math.random()*table.length)];
         currentCell.innerHTML = mole;
-        setTimeout(function () {currentCell.innerHTML = field}, 1500);
+        setTimeout(function () {currentCell.innerHTML = field}, interval);
         }, 2000);
     }
 
 
 function gameLogic(table, mole, life, score, field, hit, miss) {
 
+    let showTime = 1200;
+    timedPopups(table, mole, field, showTime);
     for (let cell of table) {
         cell.innerHTML = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
         cell.addEventListener('click', function () {
@@ -47,8 +63,8 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
             setTimeout(function () {
                 cell.innerHTML = field
             }, 500);
-            // refreshScores(life, score);
             checkState(life, score);
+
         });
     }
 }
@@ -76,12 +92,8 @@ function init() {
     let emptyField = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
     let registeredMiss = `<img alt="" src="/static/hillHit.png" class="imagepopup0">`;
     let registeredHit = `<img alt="" src="/static/hit.png" class="imagepopup0">`;
-    timedPopups(table, mole, emptyField);
+
     gameLogic(table, mole, life, score, emptyField, registeredHit, registeredMiss);
-
-
 }
-
-
 
 init();
