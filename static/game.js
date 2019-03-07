@@ -15,7 +15,8 @@ function checkState (life, score) {
         endGame()
     }
     else if (score >= 50) {
-        alert('not yet')
+        alert('YOU WON');
+        endGame()
     }
 
 }
