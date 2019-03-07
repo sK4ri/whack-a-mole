@@ -12,12 +12,13 @@ function checkState (life, score) {
     refreshScores(life, score);
     if (life < 1 || score < 0) {
         alert('GAME OVER!');
-        endGame()
+        endGame();
+    } else if (score === 10) {
+        alert('Level 2.');
+    } else if (score >= 100) {
+        alert('YOU WIN');
+        endGame();
     }
-    else if (score >= 50) {
-        alert('not yet')
-    }
-
 }
 
 
@@ -28,18 +29,20 @@ function refreshScores (life, score) {
 }
 
 
-function timedPopups (table, mole, field, showTime) {
+function timedPopups (table, mole, field, interval) {
 
     setInterval(function () {
     let currentCell = table[Math.floor(Math.random()*table.length)];
         currentCell.innerHTML = mole;
-        setTimeout(function () {currentCell.innerHTML = field}, showTime);
+        setTimeout(function () {currentCell.innerHTML = field}, interval);
         }, 2000);
     }
 
 
 function gameLogic(table, mole, life, score, field, hit, miss) {
 
+    let showTime = 1200;
+    timedPopups(table, mole, field, showTime);
     for (let cell of table) {
         cell.innerHTML = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
         cell.addEventListener('click', function () {
@@ -55,13 +58,14 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
                 cell.innerHTML = field
             }, 500);
             checkState(life, score);
+
         });
     }
 }
 
 
 function init() {
-    let showTime = 1500;
+
     let life = eval(document.querySelector('.life').textContent);
     let score = eval(document.querySelector('.scoring-system').textContent);
     let table = document.querySelectorAll('.col-md-1');
@@ -70,7 +74,6 @@ function init() {
     let registeredMiss = `<img alt="" src="/static/hillHit.png" class="imagepopup0">`;
     let registeredHit = `<img alt="" src="/static/hit.png" class="imagepopup0">`;
 
-    timedPopups(table, mole, emptyField, showTime);
     gameLogic(table, mole, life, score, emptyField, registeredHit, registeredMiss);
 }
 
