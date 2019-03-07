@@ -4,7 +4,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-family: "American Typewriter";
+    font-family: "American Typewriter", Times, serif;
     overflow: hidden;
 }
 
@@ -23,6 +23,10 @@ h1 {
     width: 80px;
 }
 
+.col-md-1:active {
+    cursor: url('/static/hammerDown.png'), pointer;
+
+}
 
 .imagepopup0{
     height: 100%;
