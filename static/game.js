@@ -1,6 +1,8 @@
 
 
 function checkState (life, score) {
+
+    refreshScores(life, score);
     if (life < 1 || score < 0) {
         alert('GAME OVER!')
     } else if (score >= 50) {
@@ -10,10 +12,9 @@ function checkState (life, score) {
 
 
 function refreshScores (life, score) {
-    document.querySelector('.life')
-                    .innerHTML = `<div id="life">${'Life: ' + life}</div>`;
-    document.querySelector('.scoring-system')
-                    .innerHTML = `<div id="scoring-system">${'Score: '+ score}</div>`;
+
+    document.querySelector('.life').innerHTML = `<div id="life">${'Life: ' + life}</div>`;
+    document.querySelector('.scoring-system').innerHTML = `<div id="scoring-system">${'Score: '+ score}</div>`;
 }
 
 
@@ -32,7 +33,6 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
     for (let cell of table) {
         cell.innerHTML = `<img alt="" src="/static/hill.png" class="imagepopup0">`;
         cell.addEventListener('click', function () {
-            // ternary ops here!
             if (cell.innerHTML === mole) {
                 cell.innerHTML = hit;
                 score += 10;
@@ -44,7 +44,7 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
             setTimeout(function () {
                 cell.innerHTML = field
             }, 500);
-            refreshScores(life, score);
+            // refreshScores(life, score);
             checkState(life, score);
         });
     }
@@ -52,6 +52,7 @@ function gameLogic(table, mole, life, score, field, hit, miss) {
 
 
 function init() {
+
     let life = eval(document.querySelector('.life').textContent);
     let score = eval(document.querySelector('.scoring-system').textContent);
     let table = document.querySelectorAll('.col-md-1');
