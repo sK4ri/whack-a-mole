@@ -14,10 +14,10 @@ function checkState (life, score) {
         alert('GAME OVER!');
         //death.play()
     } else if (score >= 50) {
-        alert('YOU WON!')
+        alert('YOU WON!');
         alert('GAME OVER!');
         endGame();
-    } else if (score === 10) {
+    } else if (score === 50) {
         alert('Level 2.');
     } else if (score >= 100) {
         alert('YOU WIN');
