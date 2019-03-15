@@ -13,7 +13,7 @@ h1 {
 }
 
 .container {
-    cursor: url('/static/hammer.png'), pointer;
+    cursor: url('/static/hammer.png') 10 40, pointer;
 }
 
 .col-md-1 {
@@ -24,7 +24,7 @@ h1 {
 }
 
 .col-md-1:active {
-    cursor: url('/static/hammerDown.png'), pointer;
+    cursor: url('/static/hammerDown.png') 10 40, pointer;
 
 }
 
