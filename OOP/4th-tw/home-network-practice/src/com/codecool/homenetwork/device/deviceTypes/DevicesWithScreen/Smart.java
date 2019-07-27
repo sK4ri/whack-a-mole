@@ -22,19 +22,19 @@ public class Smart extends DevicesWithScreen {
     }
 
     public int getNumOfDevicesWithinParameters(HomeNetwork hn, int parameter) {
-        return getFilteredList(hn.getListOfDevices(), parameter, hn).size() - 1;
+        return getFilteredList(hn.getListOfDevices(), parameter).size() - 1;
     }
 
-    private List<Device> getFilteredList(List<Device> devices, int param, HomeNetwork hn) {
+    private List<Device> getFilteredList(List<Device> devices, int param) {
         return devices
                 .stream()
-                .filter(device -> device.getBatteryLife()
-                        <= this.getBatteryLife() + param && device.getBatteryLife() >= this.getBatteryLife() - param)
+                .filter(device -> device.getRemainingPower()
+                        <= this.getRemainingPower() + param && device.getRemainingPower() >= this.getRemainingPower() - param)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public int getBatteryLife() {
+    public int getRemainingPower() {
         return this.batteryLife = batteryLife - age * 15 - getScreenSize().getBatteryDrain();
     }
 }

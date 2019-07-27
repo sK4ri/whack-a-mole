@@ -12,12 +12,13 @@ public class Normal extends DevicesWithScreen {
         this.yearOfManufacturing = year;
     }
 
-    public int getYearOfManufacturing() {
-        return yearOfManufacturing;
-    }
+    public int getRemainingPower() {
+        int batteryLifeBase = this.batteryLife = batteryLife - age * 3;
+        if (this.yearOfManufacturing >= 2000) {
+            return batteryLifeBase * 2;
+        } else {
+            return batteryLifeBase / 2;
+        }
 
-
-    public int getBatteryLife() {
-        return this.batteryLife = batteryLife - age * 3;
     }
 }

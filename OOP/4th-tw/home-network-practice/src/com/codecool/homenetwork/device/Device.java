@@ -11,7 +11,7 @@ public abstract class Device {
         this.batteryLife = batteryLife;
     }
 
-    public int getBatteryLife() {
+    public int getRemainingPower() {
         return this.batteryLife;
     }
 

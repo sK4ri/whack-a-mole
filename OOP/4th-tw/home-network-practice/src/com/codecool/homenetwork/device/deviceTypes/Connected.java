@@ -19,7 +19,7 @@ public class Connected extends Device {
         return numOfConn - 1;
     }
 
-    public int getBatteryLife(HomeNetwork hn) {
+    public int getRemainingPower(HomeNetwork hn) {
         return this.batteryLife = (batteryLife - (7 * this.age)) + getNumberOfConnectedDivices(hn) * 20;
     }
 }
