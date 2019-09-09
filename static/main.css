@@ -1,0 +1,56 @@
+body {
+    background: url("/static/horizont.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: "American Typewriter", Times, serif;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    cursor: url('/static/hammer.png') 10 40, pointer;
+}
+
+.col-md-1 {
+    display: table;
+    margin: 20px auto;
+    height: 80px;
+    width: 80px;
+}
+
+.col-md-1:active {
+    cursor: url('/static/hammerDown.png') 10 40, pointer;
+
+}
+
+.imagepopup0{
+    height: 100%;
+    width: 90%;
+    vertical-align: bottom;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+}
+
+#stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.life, .scoring-system, .start {
+    font-size: 2em;
+    color: black;
+    text-decoration: none!important;
+}
+
+.start:hover {
+    color: #485F6E;
+    box-shadow: 1px 3px;
+    cursor: pointer;
+}
